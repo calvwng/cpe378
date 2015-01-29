@@ -55,7 +55,7 @@ public class Player extends Character
        } 
        
        MouseInfo mouse = Greenfoot.getMouseInfo();
-       if (mouse != null && mouse.getButton() == 1 && mouse.getClickCount() == 2) {
+       if (mouse != null && mouse.getButton() == 1) {
           super.fire();
        }
        
