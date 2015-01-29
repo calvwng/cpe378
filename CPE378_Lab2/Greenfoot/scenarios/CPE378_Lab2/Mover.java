@@ -22,6 +22,7 @@ public class Mover extends Actor
 {
     private static final double WALKING_SPEED = 5.0;
     
+    
     /**
      * Turn 90 degrees to the right (clockwise).
      */

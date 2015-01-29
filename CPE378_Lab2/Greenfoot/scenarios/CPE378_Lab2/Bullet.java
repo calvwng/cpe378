@@ -8,7 +8,8 @@ import greenfoot.*;
  */
 public class Bullet extends Mover {
    public Bullet() {
-      getImage().scale(10, 10);
+      getImage().scale(12, 16);
+      getImage().rotate(90);
    }
     
    /**

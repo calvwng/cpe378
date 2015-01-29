@@ -24,8 +24,10 @@ public class Lab2World extends World
         Player player = new Player();
         addObject(player, getWidth()/2, getHeight()/2);
         
-        Text testText = new Text("This is test text for game dialogue and descriptions.");
-        addObject(testText, getWidth()/2, getHeight() * 7 / 8);
+        //Text testText = new Text("This is test text for game dialogue and descriptions.");
+        //addObject(testText, getWidth()/2, getHeight() * 7 / 8);
+        
+        getBackground().scale(708, 400);
     }
 }
 
