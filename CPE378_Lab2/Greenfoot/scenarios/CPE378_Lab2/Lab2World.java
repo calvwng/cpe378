@@ -18,8 +18,6 @@ public class Lab2World extends World
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 400, 1);
         populate();
-        GreenfootSound backgroundMusic = new GreenfootSound("ufo.mp3");
-        backgroundMusic.playLoop();
     }
     
     public void populate() {
@@ -30,6 +28,12 @@ public class Lab2World extends World
         //addObject(testText, getWidth()/2, getHeight() * 7 / 8);
         
         getBackground().scale(708, 400);
+    }
+
+    @Override
+    public void started() {
+        GreenfootSound backgroundMusic = new GreenfootSound("ufo.mp3");
+        backgroundMusic.playLoop();
     }
 }
 
