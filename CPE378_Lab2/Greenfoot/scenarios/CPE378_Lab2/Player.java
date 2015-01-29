@@ -29,23 +29,23 @@ public class Player extends Character
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act() 
-    {
+    {   
        moving = false;
-       if (Greenfoot.isKeyDown("left")) {
+       if (Greenfoot.isKeyDown("left") || Greenfoot.isKeyDown("a")) {
           moving = true;
           setLocation(getX() - MOVE_DELTA, getY()); 
           animate(1);
        }
-       if (Greenfoot.isKeyDown("right")) {
+       if (Greenfoot.isKeyDown("right") || Greenfoot.isKeyDown("d")) {
           moving = true;
           setLocation(getX() + MOVE_DELTA, getY()); 
           animate(2);
        }
-       if (Greenfoot.isKeyDown("up")) {
+       if (Greenfoot.isKeyDown("up") || Greenfoot.isKeyDown("w")) {
           moving = true;
           setLocation(getX(), getY() - MOVE_DELTA); 
        }
-       if (Greenfoot.isKeyDown("down")) {
+       if (Greenfoot.isKeyDown("down") || Greenfoot.isKeyDown("s")) {
           moving = true;
           setLocation(getX(), getY() + MOVE_DELTA); 
        }       
@@ -55,9 +55,16 @@ public class Player extends Character
        } 
        
        MouseInfo mouse = Greenfoot.getMouseInfo();
-       if (mouse != null && mouse.getButton() == 1) {
-          super.fire();
+       if (mouse != null) {
+          // Face ship towards mouse location if it's within bounds
+          this.turnTowards(mouse.getX(), mouse.getY());   
+
+          // Fire if left mouse button is clicked
+          if (mouse.getButton() == 1) {
+              super.fire();
+          }
        }
+       
        
        if(!moving)
        {
