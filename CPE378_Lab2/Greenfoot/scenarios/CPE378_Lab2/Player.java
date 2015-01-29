@@ -10,16 +10,20 @@ public class Player extends Character
 {
     static final int MOVE_DELTA = 2;
     private int frame;
+    private int idle_frame;
     private boolean moving;
     
     private GreenfootImage[] ship_left = new GreenfootImage[] { new GreenfootImage("ship_left1.png"), new GreenfootImage("ship_left2.png"), new GreenfootImage("ship_left3.png"), new GreenfootImage("ship_left4.png")};
     private GreenfootImage[] ship_right = new GreenfootImage[] { new GreenfootImage("ship_right1.png"), new GreenfootImage("ship_right2.png"), new GreenfootImage("ship_right3.png"), new GreenfootImage("ship_right4.png")};
+    
     private GreenfootImage idle = new GreenfootImage("idle.png");
+    
     public Player() {
        getImage().scale(50, 50);
        getImage().rotate(90);
        image_setup();
        frame = 0;
+       idle_frame = 0;
        setRotation(270);
        moving = false;
     }
@@ -62,6 +66,7 @@ public class Player extends Character
        if(!moving)
        {
            setImage(idle);
+           idle_animation();
        }
     }  
     
@@ -90,10 +95,49 @@ public class Player extends Character
             frame = 2;
         }
         if(frame < 3) { 
-            frame += 1.0; 
+            frame += 1; 
         } else { 
             frame = 0; 
         }
        
+    }
+    
+    public void idle_animation()
+    {
+        if(idle_frame < 10)
+        {
+            idle.scale(50, 50);
+        } else if (idle_frame < 20 && idle_frame >=10)
+        {
+            idle.scale(51,51);
+        } else if (idle_frame < 30 && idle_frame >= 20)
+        {
+            idle.scale(52,52);
+        } else if (idle_frame < 40 && idle_frame >= 30)
+        {
+            idle.scale(51,51);
+        } else if (idle_frame < 50 && idle_frame >= 40)
+        {
+            idle.scale(50,50);
+        } else if (idle_frame < 60 && idle_frame >= 50)
+        {
+            idle.scale(49,49);
+        } else if (idle_frame < 70 && idle_frame >= 60)
+        {
+            idle.scale(48,48);
+        } else if (idle_frame < 80 && idle_frame >= 70)
+        {
+            idle.scale(49,49);
+        } else 
+        {
+            idle.scale(50,50);
+        } 
+        
+        if(idle_frame < 90)
+        {
+           idle_frame += 1;  
+        } else {
+            idle_frame = 0;
+        }
     }
 }
