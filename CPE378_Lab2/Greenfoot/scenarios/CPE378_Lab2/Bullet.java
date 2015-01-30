@@ -19,7 +19,7 @@ public class Bullet extends Mover {
    public void act() {
       move(10.0);
       
-      if (getX() == 0 || getX() == getWorld().getWidth() || getY() == 0 || getY() == 399) {
+      if (getX() == 0 || getX() == getWorld().getWidth() - 1 || getY() == 0 || getY() == getWorld().getHeight() - 1) {
          getWorld().removeObject(this);
       }
    }    
