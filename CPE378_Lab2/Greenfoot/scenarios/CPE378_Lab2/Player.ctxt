@@ -10,4 +10,6 @@ comment3.params=anim
 comment3.target=void\ animate(int)
 comment4.params=
 comment4.target=void\ idle_animation()
-numComments=5
+comment5.params=
+comment5.target=void\ decreaseHealth()
+numComments=6

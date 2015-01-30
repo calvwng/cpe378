@@ -6,9 +6,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Player extends Character
-{
-    static final int MOVE_DELTA = 2;
+public class Player extends Character {
+    private static final int MOVE_DELTA = 2;
+    private static final int MAX_HEALTH = 3;
+    private int health;
     private int frame;
     private int idle_frame;
     private boolean moving;
@@ -19,6 +20,7 @@ public class Player extends Character
     private GreenfootImage idle = new GreenfootImage("idle.png");
     
     public Player() {
+       health = MAX_HEALTH;
        getImage().scale(50, 50);
        getImage().rotate(90);
        image_setup();
@@ -32,8 +34,7 @@ public class Player extends Character
      * Act - do whatever the Player wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public void act() 
-    {   
+    public void act() {   
        moving = false;
        if (Greenfoot.isKeyDown("left") || Greenfoot.isKeyDown("a")) {
           moving = true;
@@ -77,8 +78,7 @@ public class Player extends Character
        }
     }  
     
-    public void image_setup()
-    {
+    public void image_setup() {
         for(int i=0; i<ship_left.length; i++)
         {
             ship_left[i].scale(50, 50);
@@ -90,8 +90,7 @@ public class Player extends Character
         idle.rotate(90);
     }
    
-    public void animate(int anim)
-    {
+    public void animate(int anim) {
         switch(anim)
         {
             case 1 : setImage(ship_left[frame]); break; //move left animation
@@ -109,8 +108,7 @@ public class Player extends Character
        
     }
     
-    public void idle_animation()
-    {
+    public void idle_animation() {
         if(idle_frame < 10)
         {
             idle.scale(50, 50);
@@ -146,5 +144,18 @@ public class Player extends Character
         } else {
             idle_frame = 0;
         }
+        
+       Actor a = this.getOneIntersectingObject(Enemy.class);
+      
+       if (a != null) {
+          getWorld().removeObject(this);
+          return;
+       }
+    }
+    
+    public void decreaseHealth() {
+       if (--health == 0) {
+          getWorld().removeObject(this);
+       }
     }
 }

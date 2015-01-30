@@ -1,5 +1,5 @@
 #Greenfoot properties
-#Thu Jan 29 16:40:34 PST 2015
+#Thu Jan 29 16:51:47 PST 2015
 target2.width=80
 target8.name=MainMenu
 class.PlayerBullet.superclass=Bullet
@@ -11,7 +11,7 @@ target2.editor.y=22
 target6.typeParameters=
 target2.editor.x=40
 target1.height=50
-class.Enemy.superclass=
+class.Enemy.superclass=Character
 target8.y=190
 class.Bullet.superclass=Mover
 class.MainMenu.image=space_bg2.jpeg
@@ -132,6 +132,7 @@ target2.naviview.expanded=true
 package.numDependencies=6
 target9.editor.y=42
 target9.editor.x=40
+class.EnemyBullet.superclass=Bullet
 package.numTargets=9
 target6.editor.width=1366
 >>>>>>>=Stashed changes
@@ -162,7 +163,7 @@ target1.editor.x=40
 target5.width=80
 dependency4.to=Bullet
 target4.editor.width=900
-class.Player.superclass=
+class.Player.superclass=Character
 target4.name=Character
 target4.height=50
 target1.width=80
