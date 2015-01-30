@@ -1,5 +1,5 @@
 #Greenfoot properties
-#Thu Jan 29 16:51:47 PST 2015
+#Thu Jan 29 17:45:01 PST 2015
 target2.width=80
 target8.name=MainMenu
 class.PlayerBullet.superclass=Bullet
@@ -147,14 +147,14 @@ dependency5.type=UsesDependency
 target8.type=ClassTarget
 class.Mover.superclass=greenfoot.Actor
 target3.editor.height=635
-target7.naviview.expanded=true
 target6.width=80
+target7.naviview.expanded=true
 target7.width=90
 target6.editor.height=738
-dependency3.from=Enemy
 target9.editor.height=700
-target1.typeParameters=
+dependency3.from=Enemy
 class.Actor.superclass=
+target1.typeParameters=
 target3.width=80
 target4.width=80
 target8.typeParameters=
