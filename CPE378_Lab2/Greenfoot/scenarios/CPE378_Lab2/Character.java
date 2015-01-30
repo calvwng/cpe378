@@ -15,9 +15,8 @@ public class Character extends Actor {
       // Add your action code here.
    }
     
-   protected void fire() {
+   protected void fire(Bullet b) {
       Greenfoot.playSound("blast.wav");
-      Bullet b = new Bullet();
       getWorld().addObject(b, getX(), getY());
       b.setRotation(getRotation());
    }

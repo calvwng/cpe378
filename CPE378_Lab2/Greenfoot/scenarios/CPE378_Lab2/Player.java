@@ -55,7 +55,7 @@ public class Player extends Character
        }       
        
        if ("space".equals(Greenfoot.getKey())) {
-          super.fire();
+          super.fire(new PlayerBullet());
        } 
        
        MouseInfo mouse = Greenfoot.getMouseInfo();
@@ -65,7 +65,7 @@ public class Player extends Character
 
           // Fire if left mouse button is clicked
           if (mouse.getButton() == 1) {
-              super.fire();
+              super.fire(new PlayerBullet());
           }
        }
        
