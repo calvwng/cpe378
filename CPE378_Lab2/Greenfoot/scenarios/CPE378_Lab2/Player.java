@@ -36,6 +36,7 @@ public class Player extends Character {
      */
     public void act() {   
        moving = false;
+       //decreaseHealth();
        if (Greenfoot.isKeyDown("left") || Greenfoot.isKeyDown("a")) {
           moving = true;
           setLocation(getX() - MOVE_DELTA, getY()); 
@@ -155,7 +156,8 @@ public class Player extends Character {
     
     public void decreaseHealth() {
        if (--health == 0) {
-          getWorld().removeObject(this);
+          //getWorld().removeObject(this);
+          Greenfoot.setWorld(new GameOverScreen());
        }
     }
 }

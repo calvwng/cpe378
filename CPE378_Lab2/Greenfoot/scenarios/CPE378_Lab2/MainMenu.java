@@ -9,7 +9,7 @@ import greenfoot.*;
 public class MainMenu extends World
 {
     StartButton start = new StartButton();
-    //InstructionButton instruction = new InstructionButton();
+    ControlsButton controls = new ControlsButton();
     /**
      * Constructor for objects of class MainMenu.
      * 
@@ -26,11 +26,15 @@ public class MainMenu extends World
             Greenfoot.setWorld (new Lab2World());
             //Greenfoot.stop();
         }
+        
+        if (controls.getControls() == true) {
+            Greenfoot.setWorld (new ControlsMenu());
+        }
     }
     
     public void prepare() {
         getBackground().scale(1200, 1000);
-        addObject(start, 123, 72);
-        //addObject(instruction);
+        addObject(start, 190, 322);
+        addObject(controls, 388, 322);
     }
 }
