@@ -10,6 +10,10 @@ import java.awt.*;
 public class Text extends Actor
 {
     GreenfootImage g;
+
+   public Text() {
+       g = new GreenfootImage("", 20, Color.BLACK, Color.WHITE);  
+   }
     
     public Text(String text) {
        //GreenfootImage g = new GreenfootImage(getWorld().getWidth(), 50);
