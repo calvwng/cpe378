@@ -1,5 +1,5 @@
 #Greenfoot properties
-#Tue Feb 03 13:38:44 PST 2015
+#Tue Feb 03 14:58:31 PST 2015
 target10.editor.width=900
 target2.width=80
 target8.name=Text
@@ -49,6 +49,7 @@ target1.editor.height=700
 dependency4.from=Character
 class.StartButton.superclass=greenfoot.Actor
 dependency5.to=StartButton
+class.ShootingEnemy.image=robot.png
 target4.editor.height=635
 target1.name=Mover
 target10.showInterface=false
@@ -74,6 +75,7 @@ target2.type=ClassTarget
 class.RestartButton.image=restart_button.png
 target4.editor.y=62
 dependency1.to=Text
+class.ShootingEnemy.superclass=Enemy
 target4.editor.x=92
 dependency3.type=UsesDependency
 target2.height=50

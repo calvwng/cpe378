@@ -1,5 +1,6 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.List;
+import java.lang.Math;
 
 /**
  * Write a description of class Enemy here.
@@ -8,8 +9,10 @@ import java.util.List;
  * @version (a version number or a date)
  */
 public class Enemy extends Character {
+   int targetX, targetY;
+
    public Enemy() {
-       
+       changeRandomTarget();
    }
    
    /**
@@ -25,18 +28,41 @@ public class Enemy extends Character {
          this.setRotation(this.getRotation() + 180);
       }
 
+      //--- Idle Animation
+      GreenfootImage img = getImage();
+      img.rotate(2);
+
+      //-- Random Movement
+      if (getX() != targetX && getY() != targetY) {
+         turnTowards(targetX, targetY);
+         move(2);
+      }
+      else {
+         changeRandomTarget();
+      }
+
       //--- A.I. involving player
       List<Object> playerList = getWorld().getObjects(Player.class);
       Player player = null;
       if (playerList != null && playerList.size() > 0) {
          if ((player = (Player)playerList.get(0)) != null) {
-            this.turnTowards(player.getX(), player.getY());
-         
-            //if ((getX() < player.getX() - 50 || getX() > player.getX() + 50)
-            //  && (getY() < player.getY() - 50 || getY() > player.getY() + 50)) {
-            //   move(1);
-            //}
+            int pX = player.getX();
+            int pY = player.getY();  
+
+            if (distance(getX(), getY(), pX, pY) < 20) {
+               
+            }
          }
       }
-   }    
+   }
+
+   double distance(double x1, double y1, double x2, double y2) 
+   { 
+       return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2)); 
+   }
+
+   void changeRandomTarget() {
+       targetX = Greenfoot.getRandomNumber(Lab2World.WIDTH);
+       targetY = Greenfoot.getRandomNumber(Lab2World.HEIGHT); 
+   }
 }
