@@ -6,10 +6,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author Calvin Wong
  * @version 1-27-15
  */
-public class Lab2World extends World
+public class Lab2World extends GameWorld
 {
-    Text caption = new Text();
-
     /**
      * Constructor for objects of class Lab2World.
      * 
@@ -17,11 +15,11 @@ public class Lab2World extends World
     public Lab2World()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(600, 400, 1);
+        super();
 
         //--- Start BG Music Loop
         GreenfootSound backgroundMusic = new GreenfootSound("sounds/ufo.mp3");
-        backgroundMusic.playLoop();
+        //backgroundMusic.playLoop();
 
         //--- Populate world with player, enemies, etc.
         populate();
@@ -36,34 +34,16 @@ public class Lab2World extends World
         Player player = new Player();
         addObject(player, getWidth()/2, getHeight()/2);
                 
-        //--- Add enemies
-        for (int i = 0; i < this.getWidth(); i += this.getWidth() / 4) {
-            addObject(new Enemy(), i, getHeight() * 7 / 8);
-        }
+        //--- Spawn basic Enemies at random locations along border
+        for (int i = 0; i < 4; i++) {
+            int hgt = (i % 2 == 0) ? 1 : HEIGHT - 1;
+            addObject(new Enemy(), Greenfoot.getRandomNumber(WIDTH), hgt);    
+        }    
 
         //--- Text
 
         //--- Scale the background image.
         getBackground().scale(708, 400);
-    }
-
-    /**
-    * Set the text of the text caption
-    * @param str The text the caption will display
-    */
-    public void setCaption(String str) {
-        caption.setText(str);
-    }
-
-    /**
-    * Toggle the visibility of the text caption.
-    * @param visible True to show caption, false to hide it
-    */
-    public void toggleCaption(boolean visible) {
-        GreenfootImage img = caption.getImage();
-        int transparency = img.getTransparency();
-        
-        img.setTransparency(visible ? 255 : 0);
     }
 }
 
