@@ -60,14 +60,12 @@ public class Player extends Character {
           super.fire(new PlayerBullet());
        } 
        
-       
-       if (Greenfoot.mouseClicked(null)) {
-          MouseInfo mouse = Greenfoot.getMouseInfo();
-
+       MouseInfo mouse = Greenfoot.getMouseInfo();
+       if (mouse != null) {
           // Face ship towards mouse location if it's within bounds
           this.turnTowards(mouse.getX(), mouse.getY());   
 
-          // Fire once if left mouse button is clicked (pressed and released)
+          // Fire if left mouse button is clicked
           if (mouse.getButton() == 1) {
               super.fire(new PlayerBullet());
           }
