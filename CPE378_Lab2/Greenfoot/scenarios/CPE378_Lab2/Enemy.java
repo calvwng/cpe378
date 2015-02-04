@@ -62,7 +62,7 @@ public class Enemy extends Character {
    }
 
    void changeRandomTarget() {
-       targetX = Greenfoot.getRandomNumber(Lab2World.WIDTH);
-       targetY = Greenfoot.getRandomNumber(Lab2World.HEIGHT); 
+       targetX = Greenfoot.getRandomNumber(GameWorld.WIDTH);
+       targetY = Greenfoot.getRandomNumber(GameWorld.HEIGHT); 
    }
 }
