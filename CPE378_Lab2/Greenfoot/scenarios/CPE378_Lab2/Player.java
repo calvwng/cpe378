@@ -157,6 +157,8 @@ public class Player extends Character {
     public void decreaseHealth() {
        if (--health == 0) {
           //getWorld().removeObject(this);
+          GreenfootSound backgroundMusic = new GreenfootSound("sounds/ufo.mp3");
+          backgroundMusic.stop();
           Greenfoot.setWorld(new GameOverScreen());
        }
     }

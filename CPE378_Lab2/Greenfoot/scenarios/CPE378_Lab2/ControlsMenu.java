@@ -9,6 +9,9 @@ import greenfoot.*;
 public class ControlsMenu extends World
 {
     BackButton back = new BackButton();
+    Mouse mouse = new Mouse();
+    Keys keys = new Keys();
+    SpaceBar spacebar = new SpaceBar();
     /**
      * Constructor for objects of class ControlsMenu.
      * 
@@ -29,6 +32,9 @@ public class ControlsMenu extends World
     
     public void prepare() {
         getBackground().scale(1200, 1000);
-        addObject(back, 190, 322);
+        addObject(back, 76, 331);
+        addObject (mouse, 433, 144);
+        addObject (keys, 161, 143);
+        addObject (spacebar, 306, 323);
     }
 }

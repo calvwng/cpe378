@@ -10,6 +10,7 @@ public class MainMenu extends World
 {
     StartButton start = new StartButton();
     ControlsButton controls = new ControlsButton();
+    Logo logo = new Logo();
     /**
      * Constructor for objects of class MainMenu.
      * 
@@ -33,8 +34,9 @@ public class MainMenu extends World
     }
     
     public void prepare() {
-        getBackground().scale(1200, 1000);
+        getBackground().scale(600, 400);
         addObject(start, 190, 322);
         addObject(controls, 388, 322);
+        addObject(logo, 282, 182);
     }
 }
