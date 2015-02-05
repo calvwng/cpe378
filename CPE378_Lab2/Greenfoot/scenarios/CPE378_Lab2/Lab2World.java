@@ -8,6 +8,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Lab2World extends GameWorld
 {
+    static GreenfootSound bgMusic = new GreenfootSound("sounds/ufo.mp3");
+
     /**
      * Constructor for objects of class Lab2World.
      * 
@@ -18,8 +20,10 @@ public class Lab2World extends GameWorld
         super();
 
         //--- Start BG Music Loop
-        GreenfootSound backgroundMusic = new GreenfootSound("sounds/ufo.mp3");
-        backgroundMusic.playLoop();
+        if (bgMusic.isPlaying()) {
+            bgMusic.stop();
+        }
+        bgMusic.playLoop();
 
         //--- Populate world with player, enemies, etc.
         populate();
