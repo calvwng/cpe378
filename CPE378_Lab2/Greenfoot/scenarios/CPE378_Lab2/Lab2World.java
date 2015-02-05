@@ -11,15 +11,19 @@ public class Lab2World extends GameWorld
     static double oldTime;
     static GreenfootSound bgMusic = new GreenfootSound("sounds/ufo.mp3");
     final int ENEMY_SPAWN_INTERVAL = 1500;
+    Player player;
 
     /**
      * Constructor for objects of class Lab2World.
      * 
      */
+    public Bar bar;
     public Lab2World()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super();
+        
+        
 
         //--- Start BG Music Loop
         if (bgMusic.isPlaying()) {
@@ -42,7 +46,7 @@ public class Lab2World extends GameWorld
     public void populate() {
         initTime();
 
-        Player player = new Player();
+        player = new Player();
         addObject(player, getWidth()/2, getHeight()/2);
                 
         spawnEnemies(4);
@@ -51,6 +55,11 @@ public class Lab2World extends GameWorld
 
         //--- Scale the background image.
         getBackground().scale(708, 400);
+        //--- health bar
+       bar = new Bar("Player 1", "Health Points", player.getHealth(), player.getHealth());
+       addObject(bar, 250, 40);
+        
+       
     }
 
     /**

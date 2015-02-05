@@ -15,8 +15,9 @@ public class EnemyBullet extends Bullet {
       Actor a = this.getOneIntersectingObject(Player.class);
       
       if (a != null) {
+         ((Lab2World)getWorld()).bar.subtract(1);
          ((Player) a).decreaseHealth();
-         getWorld().removeObject(this);
+         //getWorld().removeObject(this);
          return;
       }
       

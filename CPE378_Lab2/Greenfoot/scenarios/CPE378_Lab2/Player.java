@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Player extends Character {
     private static final int MOVE_DELTA = 2;
-    private static final int MAX_HEALTH = 3;
+    private static final int MAX_HEALTH = 100;
     private int health;
     private int frame;
     private int idle_frame;
@@ -38,7 +38,7 @@ public class Player extends Character {
      */
     public void act() {   
        moving = false;
-       //decreaseHealth();
+      
        if (Greenfoot.isKeyDown("left") || Greenfoot.isKeyDown("a")) {
           moving = true;
           setLocation(getX() - MOVE_DELTA, getY()); 
@@ -78,6 +78,15 @@ public class Player extends Character {
        {
            setImage(idle);
            idle_animation();
+       }
+       
+       Actor a = this.getOneIntersectingObject(Enemy.class);
+      
+       if (a != null) {
+          getWorld().removeObject(a);
+          decreaseHealth();
+          ((Lab2World)getWorld()).bar.subtract(1);
+          return;
        }
     }  
     
@@ -148,22 +157,22 @@ public class Player extends Character {
             idle_frame = 0;
         }
         
-       Actor a = this.getOneIntersectingObject(Enemy.class);
+
       
-       if (a != null) {
-          getWorld().removeObject(a);
-          decreaseHealth();
-       }
     }
     
     public void decreaseHealth() {
        if (--health == 0) {
-          //getWorld().removeObject(this);
+          getWorld().removeObject(this);
           GreenfootSound backgroundMusic = new GreenfootSound("sounds/ufo.mp3");
           backgroundMusic.stop();
           Greenfoot.setWorld(new GameOverScreen());
           
           crunchSound.play();
        }
+    }
+    
+    public int getHealth(){
+        return health;
     }
 }

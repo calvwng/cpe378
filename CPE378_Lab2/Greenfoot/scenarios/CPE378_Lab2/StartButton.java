@@ -34,6 +34,10 @@ public class StartButton extends Actor
         return Startgame;
     }
     
+    public void setStart(boolean b) {
+        Startgame = b;
+    }
+    
     private void updateImage() {
         
         GreenfootImage image = new GreenfootImage(background);
