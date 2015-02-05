@@ -151,11 +151,8 @@ public class Player extends Character {
        Actor a = this.getOneIntersectingObject(Enemy.class);
       
        if (a != null) {
-          getWorld().removeObject(this);
-          GreenfootSound backgroundMusic = new GreenfootSound("sounds/ufo.mp3");
-          backgroundMusic.stop();
-          Greenfoot.setWorld(new GameOverScreen());
-          return;
+          getWorld().removeObject(a);
+          decreaseHealth();
        }
     }
     
