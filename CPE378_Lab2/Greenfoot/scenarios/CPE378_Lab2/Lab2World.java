@@ -77,7 +77,7 @@ public class Lab2World extends GameWorld
     public void act() {
         // Spawn some basic enemies for every interval completion
         if (Time.now - oldTime >= ENEMY_SPAWN_INTERVAL) {
-            //spawnEnemies(2);
+            spawnEnemies(2);
             oldTime = Time.now;
         }
     }

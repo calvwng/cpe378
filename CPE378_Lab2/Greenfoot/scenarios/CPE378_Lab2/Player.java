@@ -19,6 +19,8 @@ public class Player extends Character {
     
     private GreenfootImage idle = new GreenfootImage("idle.png");
     
+    GreenfootSound crunchSound = new GreenfootSound("sounds/crunch.wav");
+    
     public Player() {
        health = MAX_HEALTH;
        getImage().scale(50, 50);
@@ -163,6 +165,8 @@ public class Player extends Character {
           GreenfootSound backgroundMusic = new GreenfootSound("sounds/ufo.mp3");
           backgroundMusic.stop();
           Greenfoot.setWorld(new GameOverScreen());
+          
+          crunchSound.play();
        }
     }
 }

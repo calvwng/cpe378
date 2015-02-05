@@ -11,6 +11,8 @@ public class GameOverScreen extends World
 
     RestartButton restart = new RestartButton();
     GameOver gameOver = new GameOver();
+    GreenfootSound failSound = new GreenfootSound("sounds/failure.wav");
+    
     /**
      * Constructor for objects of class GameOverScreen.
      * 
@@ -24,7 +26,9 @@ public class GameOverScreen extends World
         // Stop the bg music
         if (Lab2World.bgMusic.isPlaying()) {
             Lab2World.bgMusic.stop();
-        }             
+        }   
+        
+        failSound.play();
     }
     
     public void act() {
