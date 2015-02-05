@@ -16,7 +16,7 @@ public class RestartButton extends Actor
 
         background = getImage();
         updateImage();
-        getImage().scale (300, 50);
+        getImage().scale (200, 50);
     }
     /**
      * Act - do whatever the BackButton wants to do. This method is called whenever

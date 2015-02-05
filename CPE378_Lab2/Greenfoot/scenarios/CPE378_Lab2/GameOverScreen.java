@@ -10,6 +10,7 @@ public class GameOverScreen extends World
 {
 
     RestartButton restart = new RestartButton();
+    GameOver gameOver = new GameOver();
     /**
      * Constructor for objects of class GameOverScreen.
      * 
@@ -23,13 +24,14 @@ public class GameOverScreen extends World
     
     public void act() {
         if (restart.getRestart() == true) {
-            Greenfoot.setWorld (new MainMenu());
+            Greenfoot.setWorld (new Lab2World());
             //Greenfoot.stop();
         }
     }
     
     public void prepare() {
         getBackground().scale(650, 400);
-        addObject(restart, 320, 325);
+        addObject(restart, 278, 305);
+        addObject(gameOver, 269, 185);
     }
 }
