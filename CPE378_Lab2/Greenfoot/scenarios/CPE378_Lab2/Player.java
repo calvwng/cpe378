@@ -86,6 +86,8 @@ public class Player extends Character {
           getWorld().removeObject(a);
           decreaseHealth();
           ((Lab2World)getWorld()).bar.subtract(1);
+          Lab2World.enemyCount--;
+          crunchSound.play();
           return;
        }
     }  
@@ -156,18 +158,6 @@ public class Player extends Character {
         } else {
             idle_frame = 0;
         }
-        
-
-      
-<<<<<<< HEAD
-       if (a != null) {
-          getWorld().removeObject(a);
-          decreaseHealth();
-          Lab2World.enemyCount--;
-          crunchSound.play();
-       }
-=======
->>>>>>> FETCH_HEAD
     }
     
     public void decreaseHealth() {

@@ -11,13 +11,10 @@ public class Lab2World extends GameWorld
     static double oldTime;
     static GreenfootSound bgMusic = new GreenfootSound("sounds/ufo.mp3");
     final int ENEMY_SPAWN_INTERVAL = 1500;
-<<<<<<< HEAD
     static int enemyCount;
     static int enemySpawn;
     static int enemyDeath;
-=======
     Player player;
->>>>>>> FETCH_HEAD
 
     /**
      * Constructor for objects of class Lab2World.
