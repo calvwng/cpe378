@@ -38,8 +38,6 @@ public class Lab2World extends GameWorld
         populate();
 
         //--- Add Text Caption
-        addObject(caption, getWidth()/2, getHeight() * 7 / 8);
-        setCaption("Caption");
         toggleCaption(false);
 
         //--- Set start time

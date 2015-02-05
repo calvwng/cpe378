@@ -25,8 +25,7 @@ public class MainMenu extends World
     public void act() {
         if (start.getStart() == true) {
             start.setStart(false);
-            Greenfoot.setWorld (new Lab2World());
-            //Greenfoot.stop();
+            Greenfoot.setWorld (new TransitionScreen());
         }
         
         if (controls.getControls() == true) {

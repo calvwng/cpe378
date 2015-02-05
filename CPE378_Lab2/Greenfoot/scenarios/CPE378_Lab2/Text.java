@@ -1,5 +1,6 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.awt.*;
+import java.util.StringTokenizer;
 
 /**
  * Write a description of class Text here.
@@ -9,31 +10,45 @@ import java.awt.*;
  */
 public class Text extends Actor
 {
-    GreenfootImage g;
+    final int CHARS_PER_LINE = 80;
+    GreenfootImage g = new GreenfootImage("", 20, Color.GREEN, null); 
 
    public Text() {
-       g = new GreenfootImage("", 20, Color.BLACK, Color.WHITE);  
+
    }
     
     public Text(String text) {
-       //GreenfootImage g = new GreenfootImage(getWorld().getWidth(), 50);
-       //g.drawString("This is test text for game dialogue and descriptions.", 5, 25);
-       
-       g = new GreenfootImage(text, 20, Color.BLACK, Color.WHITE);
+       setText(text);
        setImage(g);
     }
     
-    /**
-     * Act - do whatever the Text wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
     public void act() 
     {
-        // Add your action code here.
+        
     }
     
     public void setText(String newText) {
-       g = new GreenfootImage(newText, 20, Color.BLACK, Color.WHITE);
+       if (newText.length() > CHARS_PER_LINE) {
+          StringTokenizer tok = new StringTokenizer(newText);
+          String block = "";
+          String line = "";
+
+          while (tok.hasMoreTokens()) {
+             String nextWord = tok.nextToken();
+             if (line.length() + nextWord.length() < CHARS_PER_LINE) {
+                line += nextWord + " ";
+             }
+             else {
+                block += line + "\n";   // Flush line and add it to the block
+                line = nextWord + " ";
+             }
+          }
+          if (line != "") {
+            block += line;
+          }
+          newText = block;
+       }       
+       g = new GreenfootImage(newText, 20, Color.GREEN, null);
        setImage(g);
     }
 }
