@@ -11,6 +11,9 @@ public class Lab2World extends GameWorld
     static double oldTime;
     static GreenfootSound bgMusic = new GreenfootSound("sounds/ufo.mp3");
     final int ENEMY_SPAWN_INTERVAL = 1500;
+    static int enemyCount;
+    static int enemySpawn;
+    static int enemyDeath;
 
     /**
      * Constructor for objects of class Lab2World.
@@ -37,6 +40,10 @@ public class Lab2World extends GameWorld
 
         //--- Set start time
         oldTime = System.currentTimeMillis();
+        
+        //initialize enemy counter
+        enemyCount = 5;
+        enemySpawn = 0;
     }
     
     public void populate() {
@@ -68,17 +75,25 @@ public class Lab2World extends GameWorld
     public void spawnEnemies(int num) {
         //--- Spawn basic Enemies at random locations along border
         for (int i = 0; i < num; i++) {
-            int rand = Greenfoot.getRandomNumber(2);
-            int hgt = (rand % 2 == 0) ? 1 : HEIGHT - 1;
-            addObject(new Enemy(), Greenfoot.getRandomNumber(WIDTH), hgt);    
+            if (enemySpawn < enemyCount) {
+                int rand = Greenfoot.getRandomNumber(2);
+                int hgt = (rand % 2 == 0) ? 1 : HEIGHT - 1;
+                addObject(new Enemy(), Greenfoot.getRandomNumber(WIDTH), hgt);
+                enemySpawn++;
+            }
         }
     }
 
     public void act() {
         // Spawn some basic enemies for every interval completion
-        if (Time.now - oldTime >= ENEMY_SPAWN_INTERVAL) {
-            spawnEnemies(2);
-            oldTime = Time.now;
+        if((enemySpawn <= enemyCount) && (enemyDeath != enemyCount)) {
+            if (Time.now - oldTime >= ENEMY_SPAWN_INTERVAL) {
+                spawnEnemies(2);
+                oldTime = Time.now;
+            }
+        }
+        else {
+            Greenfoot.setWorld(new WinScreen());
         }
     }
 }

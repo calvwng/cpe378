@@ -13,6 +13,7 @@ public class PlayerBullet extends Bullet {
     */
    
    public static int score = 0;
+   GreenfootSound killSound = new GreenfootSound("sounds/crunch.wav");
    
    public void act() {
       Actor a = this.getOneIntersectingObject(Enemy.class);
@@ -21,6 +22,8 @@ public class PlayerBullet extends Bullet {
          score += a instanceof ShootingEnemy ? 500 : 100;
          getWorld().removeObject(a);
          getWorld().removeObject(this);
+         killSound.play();
+         Lab2World.enemyDeath++;
          return;
       }
       

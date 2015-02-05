@@ -153,6 +153,8 @@ public class Player extends Character {
        if (a != null) {
           getWorld().removeObject(a);
           decreaseHealth();
+          Lab2World.enemyCount--;
+          crunchSound.play();
        }
     }
     
@@ -162,7 +164,7 @@ public class Player extends Character {
           GreenfootSound backgroundMusic = new GreenfootSound("sounds/ufo.mp3");
           backgroundMusic.stop();
           Greenfoot.setWorld(new GameOverScreen());
-          
+          Lab2World.enemyDeath++;
           crunchSound.play();
        }
     }
