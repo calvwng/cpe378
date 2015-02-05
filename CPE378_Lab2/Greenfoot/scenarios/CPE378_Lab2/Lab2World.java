@@ -19,7 +19,7 @@ public class Lab2World extends GameWorld
 
         //--- Start BG Music Loop
         GreenfootSound backgroundMusic = new GreenfootSound("sounds/ufo.mp3");
-        //backgroundMusic.playLoop();
+        backgroundMusic.playLoop();
 
         //--- Populate world with player, enemies, etc.
         populate();
