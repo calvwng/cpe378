@@ -37,11 +37,14 @@ public class TransitionScreen extends GameWorld
     }
 
     public void act() {
-        if(Greenfoot.mouseClicked(null) && storyIdx <= 4) {
-            setCaption(story[storyIdx++]);
-        }
-        else if (storyIdx > 4) {
-            Greenfoot.setWorld(new Lab2World());
+        if(Greenfoot.mouseClicked(null)) {
+            if (storyIdx <= 4) {
+                setCaption(story[storyIdx]);
+            }
+            else {
+                Greenfoot.setWorld(new Lab2World());
+            }
+            storyIdx++;
         }
     }
 }
