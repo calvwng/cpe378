@@ -18,9 +18,9 @@ public class PlayerBullet extends Bullet {
       Actor a = this.getOneIntersectingObject(Enemy.class);
       
       if (a != null) {
+         score += a instanceof ShootingEnemy ? 500 : 100;
          getWorld().removeObject(a);
          getWorld().removeObject(this);
-         score += 100;
          return;
       }
       
