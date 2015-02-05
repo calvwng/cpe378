@@ -8,9 +8,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Lab2World extends GameWorld
 {
+    static double oldTime;
     static GreenfootSound bgMusic = new GreenfootSound("sounds/ufo.mp3");
-    final int ENEMY_SPAWN_INTERVAL = 1000;
-    double time = 0;
+    final int ENEMY_SPAWN_INTERVAL = 1500;
 
     /**
      * Constructor for objects of class Lab2World.
@@ -36,10 +36,12 @@ public class Lab2World extends GameWorld
         toggleCaption(false);
 
         //--- Set start time
-        time = System.currentTimeMillis();
+        oldTime = System.currentTimeMillis();
     }
     
     public void populate() {
+        initTime();
+
         Player player = new Player();
         addObject(player, getWidth()/2, getHeight()/2);
                 
@@ -49,6 +51,15 @@ public class Lab2World extends GameWorld
 
         //--- Scale the background image.
         getBackground().scale(708, 400);
+    }
+
+    /**
+    * Start representation of time/clock
+    */
+    public void initTime() {
+        Time time = new Time();
+        time.getImage().setTransparency(0);
+        addObject(time, 0, 0);
     }
 
     /**
@@ -64,12 +75,10 @@ public class Lab2World extends GameWorld
     }
 
     public void act() {
-        double curTime = System.currentTimeMillis();
-
         // Spawn some basic enemies for every interval completion
-        if (curTime - time >= ENEMY_SPAWN_INTERVAL) {
-            spawnEnemies(2);
-            time = curTime;
+        if (Time.now - oldTime >= ENEMY_SPAWN_INTERVAL) {
+            //spawnEnemies(2);
+            oldTime = Time.now;
         }
     }
 }
