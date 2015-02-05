@@ -1,5 +1,5 @@
 #Greenfoot properties
-#Wed Feb 04 19:38:21 PST 2015
+#Wed Feb 04 19:48:11 PST 2015
 target16.name=Mover
 target2.name=EnemyBullet
 class.Text.superclass=greenfoot.Actor
@@ -38,6 +38,7 @@ target6.naviview.expanded=true
 class.Character.image=man01.png
 target21.naviview.expanded=true
 target6.editor.width=900
+class.WinScreen.image=black.png
 class.ControlsButton.superclass=greenfoot.Actor
 dependency1.type=UsesDependency
 target16.y=130
@@ -181,6 +182,7 @@ target7.editor.x=0
 target9.typeParameters=
 class.GameOverScreen.superclass=greenfoot.World
 class.ControlsButton.image=controls_button.png
+class.WinText.image=winning.png
 class.BackButton.image=back_button.png
 target16.height=50
 target19.editor.height=700
@@ -217,6 +219,7 @@ target10.editor.height=700
 target11.type=ClassTarget
 target2.x=10
 dependency22.type=UsesDependency
+class.WinText.superclass=greenfoot.Actor
 target16.editor.y=22
 target18.type=ClassTarget
 target16.editor.x=40
@@ -363,6 +366,7 @@ target5.showInterface=false
 target1.editor.width=900
 target18.height=50
 target2.width=100
+class.WinScreen.superclass=greenfoot.World
 target10.name=GameWorld
 target17.y=370
 target17.x=120
