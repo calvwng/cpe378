@@ -23,6 +23,6 @@ public class WinScreen extends World
     
     public void prepare() {
         getBackground().scale(650, 400);
-        addObject(WinText, 278, 305);
+        addObject(winText, 278, 305);
     }
 }
