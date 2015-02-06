@@ -8,9 +8,10 @@ import greenfoot.*;
  */
 public class WinScreen extends GameWorld
 {
-
     WinText winText = new WinText();
     GreenfootSound endSound = new GreenfootSound("sounds/failure.wav");
+    Text finalScoreDisplay;
+
     /**
      * Constructor for objects of class GameOverScreen.
      * 
@@ -27,7 +28,10 @@ public class WinScreen extends GameWorld
         }
         
         setCaption("The Harvesters have been defeated...life on Earth will continue to press on!");
-        toggleCaption(true);   
+        toggleCaption(true);
+
+        finalScoreDisplay = new Text("Final Score: " + PlayerBullet.score);
+        addObject(finalScoreDisplay, getWidth() / 2, getHeight() / 2);
     }
     
     public void prepare() {
