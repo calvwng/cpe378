@@ -20,6 +20,7 @@ public class Player extends Character {
     private GreenfootImage idle = new GreenfootImage("idle.png");
     
     GreenfootSound crunchSound = new GreenfootSound("sounds/crunch.wav");
+    GreenfootSound gruntSound = new GreenfootSound("sounds/grunt.wav");
     
     public Player() {
        health = MAX_HEALTH;
@@ -87,7 +88,6 @@ public class Player extends Character {
           decreaseHealth();
           ((Lab2World)getWorld()).bar.subtract(1);
           Lab2World.enemyCount--;
-          crunchSound.play();
           return;
        }
     }  
@@ -161,14 +161,17 @@ public class Player extends Character {
     }
     
     public void decreaseHealth() {
+       crunchSound.play();
+       gruntSound.play();
+       Lab2World.enemyDeath++;
+        
        if (--health == 0) {
           getWorld().removeObject(this);
           GreenfootSound backgroundMusic = new GreenfootSound("sounds/ufo.mp3");
           backgroundMusic.stop();
           Greenfoot.setWorld(new GameOverScreen());
-          Lab2World.enemyDeath++;
-          crunchSound.play();
        }
+       
     }
     
     public int getHealth(){
