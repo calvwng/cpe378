@@ -16,6 +16,8 @@ public class Lab2World extends GameWorld
     static int enemyDeath;
     Player player;
 
+    Text scoreDisplay;
+
     /**
      * Constructor for objects of class Lab2World.
      * 
@@ -37,15 +39,19 @@ public class Lab2World extends GameWorld
         //--- Populate world with player, enemies, etc.
         populate();
 
-        //--- Add Text Caption
+        //--- Add Score Display
+        scoreDisplay = new Text("0000");
+        addObject(scoreDisplay, getWidth() / 2, 20);        
         toggleCaption(false);
 
         //--- Set start time
         oldTime = System.currentTimeMillis();
         
         //initialize enemy counter
-        enemyCount = 5;
+        enemyCount = 30;     // WIN CONDITION: Defeat this many enemies
         enemySpawn = 0;
+        enemyDeath = 0;
+        PlayerBullet.score = 0;
     }
     
     public void populate() {
@@ -82,7 +88,7 @@ public class Lab2World extends GameWorld
     public void spawnEnemies(int num) {
         //--- Spawn basic Enemies at random locations along border
         for (int i = 0; i < num; i++) {
-            if (enemySpawn < enemyCount) {
+            if (enemySpawn <= enemyCount) {
                 int rand = Greenfoot.getRandomNumber(2);
                 int hgt = (rand % 2 == 0) ? 1 : HEIGHT - 1;
                 addObject(new Enemy(), Greenfoot.getRandomNumber(WIDTH), hgt);
@@ -102,6 +108,9 @@ public class Lab2World extends GameWorld
         else {
             Greenfoot.setWorld(new WinScreen());
         }
+
+        // Update score
+        scoreDisplay.setText(PlayerBullet.score + " pts");
     }
 }
 
