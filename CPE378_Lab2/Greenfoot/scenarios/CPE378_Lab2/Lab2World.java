@@ -8,10 +8,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Lab2World extends GameWorld
 {
-    static double oldTime;
+    static double oldTime, talkTime;
     static GreenfootSound bgMusic = new GreenfootSound("sounds/ufo.mp3");
     final int ENEMY_SPAWN_INTERVAL = 1500;
-    
+    final int TALK_INTERVAL = 6000;
     final int WAVE_INTERVAL = 5000;
     static int enemyCount;
     static int enemySpawn;
@@ -53,10 +53,14 @@ public class Lab2World extends GameWorld
         //--- Wave Display
         waveDisplay = new Text("");
         addObject(waveDisplay, getWidth() - getWidth() / 3, 20);
-        toggleCaption(false);
+
+        //--- Character
+        setCaption("Chad Price: Time for me to make things right!");
+        toggleCaption(true);
+        talkTime = Time.now;
 
         //--- Set start time
-        oldTime = System.currentTimeMillis();
+        oldTime = Time.now;
         
         //initialize enemy counter
         enemyCount = 30;     // WIN CONDITION: Defeat this many enemies
@@ -146,6 +150,10 @@ public class Lab2World extends GameWorld
 
                 if (waveCount > 1) { // Spawn half as many shooting enemies
                     spawnShootingEnemies(spawnRate / 3);
+
+                    setCaption("Chad Price: Great. Now some of the bots have weapons?!");
+                    toggleCaption(true);
+                    talkTime = Time.now;                  
                 }
 
                 oldTime = Time.now;
@@ -160,6 +168,10 @@ public class Lab2World extends GameWorld
                 enemySpawn = 0;
             
                 oldTime = Time.now;
+
+                setCaption("Chad Price: Look likes another wave's coming in...more practice targets!");
+                toggleCaption(true);
+                talkTime = Time.now;
             }
             
             if (waveCount > 3) {
@@ -176,8 +188,15 @@ public class Lab2World extends GameWorld
         scoreDisplay.setText(PlayerBullet.score + " pts");
         waveDisplay.setText("Wave " + waveCount);
         
-        if(player.getHealth() <= bar.getBreakValue()) {
+        if (player.getHealth() <= bar.getBreakValue()) {
             portrait.setImage(portraitD);
+            setCaption("Chad Price: I guess my team really built these tough suckers with love, huh? Agh.");
+            toggleCaption(true);
+            talkTime = Time.now;
+        }
+
+        if (Time.now - talkTime >= TALK_INTERVAL) {
+            toggleCaption(false);
         }
     }
 }
