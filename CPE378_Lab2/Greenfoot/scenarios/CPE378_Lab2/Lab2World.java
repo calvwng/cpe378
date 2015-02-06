@@ -143,6 +143,11 @@ public class Lab2World extends GameWorld
         if((enemySpawn <= enemyCount) && (enemyDeath != enemyCount)) {
             if (Time.now - oldTime >= ENEMY_SPAWN_INTERVAL) {
                 spawnEnemies(spawnRate);
+
+                if (waveCount > 1) { // Spawn half as many shooting enemies
+                    spawnShootingEnemies(spawnRate / 3);
+                }
+
                 oldTime = Time.now;
             }
         }
@@ -159,7 +164,7 @@ public class Lab2World extends GameWorld
             
             if (waveCount > 3) {
                     Greenfoot.setWorld(new WinScreen());
-                }
+            }
             
             //uncomment for boss implementation, will lighten spawning of enemies.
             /*if (wave == 3) {

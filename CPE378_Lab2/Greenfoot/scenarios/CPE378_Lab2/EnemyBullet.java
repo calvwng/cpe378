@@ -7,10 +7,7 @@ import greenfoot.*;
  * @version Jan 29, 2015
  */
 public class EnemyBullet extends Bullet {
-   /**
-    * Act - do whatever the EnemyBullet wants to do. This method is called whenever
-    * the 'Act' or 'Run' button gets pressed in the environment.
-    */
+
    public void act() {
       Actor a = this.getOneIntersectingObject(Player.class);
       
@@ -21,7 +18,11 @@ public class EnemyBullet extends Bullet {
          return;
       }
       
-      super.act();
+      move(5.0);
+      
+      if (getX() == 0 || getX() == getWorld().getWidth() - 1 || getY() == 0 || getY() == getWorld().getHeight() - 1) {
+         getWorld().removeObject(this);
+      }
    }    
 }
 
