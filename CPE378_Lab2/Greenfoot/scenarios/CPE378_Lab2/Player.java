@@ -9,6 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Player extends Character {
     private static final int MOVE_DELTA = 2;
     private static final int MAX_HEALTH = 100;
+    static final int HIT_INTERVAL = 2000;
     private int health;
     private int frame;
     private int idle_frame;
@@ -86,7 +87,7 @@ public class Player extends Character {
        if (a != null) {
           getWorld().removeObject(a);
           decreaseHealth();
-          ((Lab2World)getWorld()).bar.subtract(1);
+          ((Lab2World)getWorld()).bar.subtract(5);
           Lab2World.enemyCount--;
           return;
        }
@@ -161,11 +162,14 @@ public class Player extends Character {
     }
     
     public void decreaseHealth() {
+
        crunchSound.play();
        gruntSound.play();
        Lab2World.enemyDeath++;
         
-       if (--health == 0) {
+       
+       health -= 5;
+       if (health == 0) {
           getWorld().removeObject(this);
           GreenfootSound backgroundMusic = new GreenfootSound("sounds/ufo.mp3");
           backgroundMusic.stop();

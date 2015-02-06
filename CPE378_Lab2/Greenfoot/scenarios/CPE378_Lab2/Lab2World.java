@@ -11,6 +11,7 @@ public class Lab2World extends GameWorld
     static double oldTime;
     static GreenfootSound bgMusic = new GreenfootSound("sounds/ufo.mp3");
     final int ENEMY_SPAWN_INTERVAL = 1500;
+    
     final int WAVE_INTERVAL = 5000;
     static int enemyCount;
     static int enemySpawn;
@@ -18,6 +19,11 @@ public class Lab2World extends GameWorld
     int waveCount;
     int spawnRate;
     Player player;
+    static Portrait portrait;
+    
+    static GreenfootImage portraitI = new GreenfootImage("portrait_idle.png");
+    static GreenfootImage portraitH = new GreenfootImage("portrait_hit.png");
+    static GreenfootImage portraitD = new GreenfootImage("portrait_nearDeath.png");
 
     Text scoreDisplay, waveDisplay;
 
@@ -30,8 +36,6 @@ public class Lab2World extends GameWorld
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super();
-        
-        
 
         //--- Start BG Music Loop
         if (bgMusic.isPlaying()) {
@@ -61,12 +65,26 @@ public class Lab2World extends GameWorld
         PlayerBullet.score = 0;
         waveCount = 1;
         spawnRate = 2;
+        scaleImages();
     }
-    
+    private void scaleImages(){
+        portraitI.scale(300, 125);
+        portraitH.scale(300, 125);
+        portraitD.scale(300, 125);
+    }
     public void populate() {
-        initTime();
+       initTime();
+       player = new Player();
+       portrait = new Portrait();
+       portrait.setImage(portraitI);
+       
+       //adding portrait  
+       addObject(portrait, 86, 340);
+       bar = new Bar(player.getHealth(), player.getHealth());
+       addObject(bar, 125, 340);
+        
 
-        player = new Player();
+        
         addObject(player, getWidth()/2, getHeight()/2);
                 
         spawnEnemies(4);
@@ -76,9 +94,8 @@ public class Lab2World extends GameWorld
         //--- Scale the background image.
         getBackground().scale(708, 400);
         //--- health bar
-       bar = new Bar("Player 1", "Health Points", player.getHealth(), player.getHealth());
-       addObject(bar, 250, 40);
-        
+       
+       
        
     }
 
@@ -153,6 +170,10 @@ public class Lab2World extends GameWorld
         // Update score and wave
         scoreDisplay.setText(PlayerBullet.score + " pts");
         waveDisplay.setText("Wave " + waveCount);
+        
+        if(player.getHealth() <= bar.getBreakValue()) {
+            portrait.setImage(portraitD);
+        }
     }
 }
 
