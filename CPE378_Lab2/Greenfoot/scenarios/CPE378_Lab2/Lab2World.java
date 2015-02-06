@@ -19,7 +19,7 @@ public class Lab2World extends GameWorld
     int spawnRate;
     Player player;
 
-    Text scoreDisplay;
+    Text scoreDisplay, waveDisplay;
 
     /**
      * Constructor for objects of class Lab2World.
@@ -43,8 +43,12 @@ public class Lab2World extends GameWorld
         populate();
 
         //--- Add Score Display
-        scoreDisplay = new Text("0000");
-        addObject(scoreDisplay, getWidth() / 2, 20);        
+        scoreDisplay = new Text("");
+        addObject(scoreDisplay, getWidth() / 3, 20);
+
+        //--- Wave Display
+        waveDisplay = new Text("");
+        addObject(waveDisplay, getWidth() - getWidth() / 3, 20);
         toggleCaption(false);
 
         //--- Set start time
@@ -146,8 +150,9 @@ public class Lab2World extends GameWorld
             }*/
         }
 
-        // Update score
+        // Update score and wave
         scoreDisplay.setText(PlayerBullet.score + " pts");
+        waveDisplay.setText("Wave " + waveCount);
     }
 }
 

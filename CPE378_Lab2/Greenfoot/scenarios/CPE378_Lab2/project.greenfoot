@@ -1,5 +1,5 @@
 #Greenfoot properties
-#Thu Feb 05 16:39:27 PST 2015
+#Thu Feb 05 16:51:25 PST 2015
 target16.name=BackButton
 class.Bar.superclass=greenfoot.Actor
 dependency35.to=Time
@@ -129,8 +129,8 @@ target8.height=50
 target25.showInterface=false
 dependency26.to=Player
 target16.editor.width=900
-mainWindow.y=39
-mainWindow.x=60
+mainWindow.y=-8
+mainWindow.x=-8
 target26.naviview.expanded=true
 target3.showInterface=false
 target12.showInterface=false
@@ -470,7 +470,7 @@ dependency47.from=Lab2World
 class.Player.image=redfighter0005.png
 target20.width=100
 target6.editor.y=22
-mainWindow.height=768
+mainWindow.height=754
 target9.naviview.expanded=true
 target6.editor.x=40
 class.Bullet.image=beams_2.png
@@ -564,5 +564,5 @@ target18.typeParameters=
 target19.showInterface=false
 target1.height=50
 target4.typeParameters=
-mainWindow.width=1150
+mainWindow.width=1382
 =\=\=\=\=\=\=
