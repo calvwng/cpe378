@@ -9,6 +9,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class TransitionScreen extends GameWorld
 {
     String[] story = new String[5];
+    GreenfootImage[] images = new GreenfootImage[5];
+    Image storyImage;
+    
     int storyIdx = 1;
 
     /**
@@ -27,19 +30,29 @@ public class TransitionScreen extends GameWorld
                    + "to accelerate the global warming process in order to cleanse the Earth of the life that had failed it";
         story[3] = "Using spies within NASA and sophisticated computer viruses, the New Suns disabled most of the world’s "
                    + "technological defenses and took control of the maintenance bots, dubbing them “Harvesters” and "
-                   + "outfitting them for an attack against the rest of the world.";
-        story[4] = "For 11 months, the seized bots have been harvesting the Earth’s Ozone layer as fuel for a secret "
-                   + "weapon meant to wipe out the world’s current inhabitants. In those 11 months, the NASA team lead Chad Price "
-                   + "has been training with the Earth’s remaining resistance force for a chance at redemption for allowing this to happen. "
-                   + "Today is his chance to take down the Harvesters and prevent the New Suns from destroying the only home he knows.";
+                   + "outfitted them for an attack against the rest of the world.";
+        story[4] = "For 5 months, the New Suns' Harvesters have been consuming the Earth’s Ozone layer to lay waste"
+                   + "to the world’s environment and inhabitants. In that time, NASA team lead Chad Price "
+                   + "has been training with Earth’s resistance force for a chance to redeem himself. "
+                   + "Today is that chance, and no Harvester shall be left intact.";
         setCaption(story[0]);
         toggleCaption(true);
+
+        images[0] = new GreenfootImage("images/drought.jpg");
+        images[1] = new GreenfootImage("images/earthsorbit.jpg");
+        images[2] = new GreenfootImage("images/cyberterrorist.jpg");
+        images[3] = new GreenfootImage("images/earthsatellites.jpg");
+        images[4] = new GreenfootImage("images/chad_price_grin.png");        
+        storyImage = new Image();
+        storyImage.setImage(images[0]);
+        addObject(storyImage, getWidth() / 2, getHeight() / 3);
     }
 
     public void act() {
         if(Greenfoot.mouseClicked(null)) {
             if (storyIdx <= 4) {
                 setCaption(story[storyIdx]);
+                storyImage.setImage(images[storyIdx]);
             }
             else {
                 Greenfoot.setWorld(new Lab2World());
