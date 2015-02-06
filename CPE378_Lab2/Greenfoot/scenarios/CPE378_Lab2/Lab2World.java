@@ -11,9 +11,12 @@ public class Lab2World extends GameWorld
     static double oldTime;
     static GreenfootSound bgMusic = new GreenfootSound("sounds/ufo.mp3");
     final int ENEMY_SPAWN_INTERVAL = 1500;
+    final int WAVE_INTERVAL = 5000;
     static int enemyCount;
     static int enemySpawn;
     static int enemyDeath;
+    int waveCount;
+    int spawnRate;
     Player player;
 
     Text scoreDisplay;
@@ -52,6 +55,8 @@ public class Lab2World extends GameWorld
         enemySpawn = 0;
         enemyDeath = 0;
         PlayerBullet.score = 0;
+        waveCount = 1;
+        spawnRate = 2;
     }
     
     public void populate() {
@@ -101,12 +106,29 @@ public class Lab2World extends GameWorld
         // Spawn some basic enemies for every interval completion
         if((enemySpawn <= enemyCount) && (enemyDeath != enemyCount)) {
             if (Time.now - oldTime >= ENEMY_SPAWN_INTERVAL) {
-                spawnEnemies(2);
+                spawnEnemies(spawnRate);
                 oldTime = Time.now;
             }
         }
         else {
-            Greenfoot.setWorld(new WinScreen());
+            if (Time.now - oldTime >= WAVE_INTERVAL) {
+                waveCount++;
+                spawnRate++;
+                enemyDeath = 0;
+                enemyCount += 20;
+                enemySpawn = 0;
+            
+                oldTime = Time.now;
+            }
+            
+            if (waveCount > 3) {
+                    Greenfoot.setWorld(new WinScreen());
+                }
+            
+            //uncomment for boss implementation, will lighten spawning of enemies.
+            /*if (wave == 3) {
+            /*    spawnRate -= 2;
+            }*/
         }
 
         // Update score
