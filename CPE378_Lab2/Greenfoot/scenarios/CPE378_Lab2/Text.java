@@ -10,7 +10,7 @@ import java.util.StringTokenizer;
  */
 public class Text extends Actor
 {
-    final int CHARS_PER_LINE = 80;
+    final int CHARS_PER_LINE = 60;
     GreenfootImage g = new GreenfootImage("", 20, Color.GREEN, null); 
 
    public Text() {

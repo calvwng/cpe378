@@ -12,6 +12,8 @@ public class Enemy extends Character {
    int targetX, targetY;
 
    public Enemy() {
+       GreenfootImage g = getImage();
+       getImage().scale(g.getWidth()/2, g.getHeight()/2);
        changeRandomTarget();
    }
    

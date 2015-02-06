@@ -102,6 +102,21 @@ public class Lab2World extends GameWorld
         }
     }
 
+    /**
+    * Spawn |num| shooting enemies at random corners of the World
+    */
+    public void spawnShootingEnemies(int num) {
+        //--- Spawn ShootingEnemies at random locations along border
+        for (int i = 0; i < num; i++) {
+            if (enemySpawn <= enemyCount) {
+                int rand = Greenfoot.getRandomNumber(2);
+                int width = (rand % 2 == 0) ? 1 : WIDTH - 1;
+                addObject(new ShootingEnemy(), width, Greenfoot.getRandomNumber(HEIGHT));
+                enemySpawn++;
+            }
+        }
+    }    
+
     public void act() {
         // Spawn some basic enemies for every interval completion
         if((enemySpawn <= enemyCount) && (enemyDeath != enemyCount)) {
